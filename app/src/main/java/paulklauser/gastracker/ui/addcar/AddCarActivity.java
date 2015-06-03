@@ -15,7 +15,10 @@ public class AddCarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_car);
-        getFragmentManager().beginTransaction().add(R.id.add_car_frame, new EnterNameFragment());
+        getFragmentManager()
+            .beginTransaction()
+            .add(R.id.add_car_frame, new EnterNameFragment())
+            .commit();
     }
 
     @Override

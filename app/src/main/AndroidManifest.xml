@@ -10,6 +10,10 @@
         <activity
             android:name=".ui.addcar.AddCarActivity"
             android:label="@string/title_activity_add_car" >
+            <intent-filter>
+                <action android:name="ANDROID.INTENT.ACTION.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
     </application>
 

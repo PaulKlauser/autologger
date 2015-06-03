@@ -11,14 +11,33 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:textSize="@dimen/abc_text_size_large_material"/>
-    <TextInputLayout
-        android:id="@+id/make"
-        android:layout_width="50dp"
-        android:layout_height="50dp">
-        <EditText
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp">
+        <AutoCompleteTextView
+            android:id="@+id/make"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:hint="Make"/>
-    </TextInputLayout>
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content">
+        <AutoCompleteTextView
+            android:id="@+id/model"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Model"/>
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content">
+        <AutoCompleteTextView
+            android:id="@+id/year"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Year"/>
+    </android.support.design.widget.TextInputLayout>
 
 </LinearLayout>

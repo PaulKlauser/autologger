@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/select_vehicle"
@@ -12,9 +13,12 @@
         android:layout_marginTop="10dp"
         android:textSize="@dimen/abc_text_size_large_material"/>
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/make_holder"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp">
+        android:layout_below="@id/title"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp">
         <AutoCompleteTextView
             android:id="@+id/make"
             android:layout_width="match_parent"
@@ -22,8 +26,11 @@
             android:hint="Make"/>
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/model_holder"
         android:layout_width="300dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/make_holder"
+        android:layout_marginLeft="10dp">
         <AutoCompleteTextView
             android:id="@+id/model"
             android:layout_width="match_parent"
@@ -32,7 +39,9 @@
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
         android:layout_width="300dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/model_holder"
+        android:layout_marginLeft="10dp">
         <AutoCompleteTextView
             android:id="@+id/year"
             android:layout_width="match_parent"
@@ -40,5 +49,14 @@
             android:hint="Year"
             android:completionThreshold="1"/>
     </android.support.design.widget.TextInputLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/borderlessButtonStyle"
+        android:text="@string/next"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"/>
 
-</LinearLayout>
+</RelativeLayout>

@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 
 import paulklauser.gastracker.R;
 
@@ -17,7 +16,7 @@ public class AddCarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_car);
         getFragmentManager()
             .beginTransaction()
-            .add(R.id.add_car_frame, new EnterNameFragment())
+            .add(R.id.add_car_frame, new EnterInfoFragment())
             .commit();
     }
 

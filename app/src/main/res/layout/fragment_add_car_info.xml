@@ -37,7 +37,8 @@
             android:id="@+id/year"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Year"/>
+            android:hint="Year"
+            android:completionThreshold="1"/>
     </android.support.design.widget.TextInputLayout>
 
 </LinearLayout>

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
@@ -23,12 +24,12 @@ public class EnterInfoFragment extends Fragment implements EdmundsHelper.LoadMak
     private AutoCompleteTextView mMake;
     private AutoCompleteTextView mModel;
     private AutoCompleteTextView mYear;
+    private AddCarActivity mActivity;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_add_car_info, container, false);
-
         return rootView;
     }
 
@@ -68,6 +69,20 @@ public class EnterInfoFragment extends Fragment implements EdmundsHelper.LoadMak
             }
         });
 
+        Button next = (Button) view.findViewById(R.id.next);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mActivity.enterInfoDone(mMake.getText().toString(), mModel.getText().toString(), mYear.getText().toString());
+            }
+        });
+
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mActivity = (AddCarActivity) getActivity();
     }
 
     @Override

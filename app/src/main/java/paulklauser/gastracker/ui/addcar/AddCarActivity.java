@@ -6,9 +6,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import paulklauser.gastracker.R;
+import paulklauser.gastracker.database.CarDataSource;
 
 public class AddCarActivity extends AppCompatActivity {
 
+    private CarDataSource mCarDataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +20,21 @@ public class AddCarActivity extends AppCompatActivity {
             .beginTransaction()
             .add(R.id.add_car_frame, new EnterInfoFragment())
             .commit();
+
+        mCarDataSource = new CarDataSource(this);
+        mCarDataSource.open();
+    }
+
+    public void enterInfoDone(String make, String model, String year) {
+        mCarDataSource.createCar(make, model, year);
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.add_car_frame, new SelectPictureFragment())
+                .commit();
+    }
+
+    public void selectPictureDone() {
+
     }
 
     @Override

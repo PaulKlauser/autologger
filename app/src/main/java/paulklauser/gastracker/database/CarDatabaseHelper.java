@@ -14,7 +14,7 @@ public class CarDatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_MAKE = "make";
     public static final String COLUMN_MODEL = "model";
     public static final String COLUMN_YEAR = "year";
-    public static final String COLUMN_MILES = "miles";
+    //public static final String COLUMN_MILES = "miles";
 
     private static final String DATABASE_NAME = "carz.db";
     private static final int DATABSE_VERSION = 1;

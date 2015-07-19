@@ -4,12 +4,17 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import java.io.File;
+import java.io.IOException;
 
 import paulklauser.gastracker.R;
 
@@ -20,6 +25,8 @@ public class SelectPictureFragment extends Fragment {
 
     private AddCarActivity mActivity;
     private static final int SELECT_PHOTO_REQUEST = 100;
+    private static final int TAKE_PHOTO_REQUEST = 101;
+    private File mPhoto;
 
     @Nullable
     @Override
@@ -50,6 +57,28 @@ public class SelectPictureFragment extends Fragment {
                 startActivityForResult(photoPickerIntent, SELECT_PHOTO_REQUEST);
             }
         });
+
+        takePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takePictureIntent.resolveActivity(mActivity.getPackageManager()) != null) {
+                    //try {
+                    try {
+                        mPhoto = File.createTempFile(String.valueOf(mActivity.mCurrentCar.getId()) + System.currentTimeMillis(), ".png");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    //} catch (IOException e) {
+                    //    e.printStackTrace();
+                    //}
+                    if (mPhoto != null) {
+                        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(mPhoto));
+                        startActivityForResult(takePictureIntent, TAKE_PHOTO_REQUEST);
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -57,6 +86,8 @@ public class SelectPictureFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == SELECT_PHOTO_REQUEST && resultCode == Activity.RESULT_OK) {
             mActivity.mCurrentCar.setPicture(mActivity, data.getData());
+        } else if (requestCode == TAKE_PHOTO_REQUEST && resultCode == Activity.RESULT_OK) {
+            mActivity.mCurrentCar.setPicture(mActivity, Uri.fromFile(mPhoto));
         }
     }
 

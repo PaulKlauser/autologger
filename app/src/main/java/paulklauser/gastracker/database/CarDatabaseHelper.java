@@ -19,14 +19,14 @@ public class CarDatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_PICTURE_PATH = "picture";
 
     private static final String DATABASE_NAME = "carz.db";
-    private static final int DATABSE_VERSION = 1;
+    private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_CREATE = "create table " + TABLE_CARS + "(" +
             COLUMN_ID + " integer primary key autoincrement, " + COLUMN_NICK_NAME + " text, " + COLUMN_MAKE + " text not null, " +
             COLUMN_MODEL + " text not null, " + COLUMN_YEAR + " text not null, " + COLUMN_MILES + " integer, " +
             COLUMN_PICTURE_PATH + " text);";
 
     public CarDatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABSE_VERSION);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override

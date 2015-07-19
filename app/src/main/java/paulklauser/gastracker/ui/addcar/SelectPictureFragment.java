@@ -1,6 +1,9 @@
 package paulklauser.gastracker.ui.addcar;
 
+import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -16,6 +19,7 @@ import paulklauser.gastracker.R;
 public class SelectPictureFragment extends Fragment {
 
     private AddCarActivity mActivity;
+    private static final int SELECT_PHOTO_REQUEST = 100;
 
     @Nullable
     @Override
@@ -28,12 +32,32 @@ public class SelectPictureFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Button next = (Button) view.findViewById(R.id.next);
+        Button choosePicture = (Button) view.findViewById(R.id.choose_picture);
+        Button takePicture = (Button) view.findViewById(R.id.take_picture);
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
+
+        choosePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+                photoPickerIntent.setType("image/*");
+                startActivityForResult(photoPickerIntent, SELECT_PHOTO_REQUEST);
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == SELECT_PHOTO_REQUEST && resultCode == Activity.RESULT_OK) {
+            mActivity.mCurrentCar.setPicture(mActivity, data.getData());
+        }
     }
 
     @Override

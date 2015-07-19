@@ -7,6 +7,9 @@
 
     <!-- Add New Car -->
     <string name="select_vehicle">Enter your vehicle\'s information</string>
+    <string name="select_picture">Choose a picture for your vehicle</string>
+    <string name="picture_from_phone">Choose a picture from your phone</string>
+    <string name="take_new_picture">Take a new picture</string>
 
     <!-- General -->
     <string name="next">Next</string>

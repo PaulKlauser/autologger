@@ -1,24 +1,31 @@
 package paulklauser.gastracker.database;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
+import android.net.Uri;
+
+import paulklauser.gastracker.utils.BitMapUtils;
+
 /**
  * Created by Paul on 6/13/2015.
  */
 public class Car {
 
-
     private long mId;
-    private String mName;
+    private String mNickName;
     private String mMake;
     private String mModel;
     private String mYear;
     private int mMiles;
+    private Bitmap mPicture;
 
-    public String getName() {
-        return mName;
+    public String getNickName() {
+        return mNickName;
     }
 
-    public void setName(String name) {
-        mName = mName;
+    public void setNickName(String name) {
+        mNickName = mNickName;
     }
 
     public String getMake() {
@@ -60,5 +67,13 @@ public class Car {
 
     public void setId(long id) {
         mId = id;
+    }
+
+    public Bitmap getPicture() {
+        return mPicture;
+    }
+
+    public void setPicture(Context context, Uri bitmapUri) {
+        mPicture = BitMapUtils.saveVehicleBitmap(context, bitmapUri, mId);
     }
 }

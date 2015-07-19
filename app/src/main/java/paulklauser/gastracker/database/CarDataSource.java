@@ -16,8 +16,13 @@ public class CarDataSource {
 
     private SQLiteDatabase mDatabase;
     private CarDatabaseHelper mDbHelper;
-    private String[] allColumns = { CarDatabaseHelper.COLUMN_ID, CarDatabaseHelper.COLUMN_MAKE,
-        CarDatabaseHelper.COLUMN_MODEL, CarDatabaseHelper.COLUMN_YEAR };
+    private String[] allColumns = {
+            CarDatabaseHelper.COLUMN_ID,
+            CarDatabaseHelper.COLUMN_NICK_NAME,
+            CarDatabaseHelper.COLUMN_MAKE,
+            CarDatabaseHelper.COLUMN_MODEL,
+            CarDatabaseHelper.COLUMN_YEAR,
+            CarDatabaseHelper.COLUMN_MILES };
 
     public CarDataSource(Context context) {
         mDbHelper = new CarDatabaseHelper(context);
@@ -31,9 +36,13 @@ public class CarDataSource {
         mDbHelper.close();
     }
 
-    public Car createCar(String make, String model, String year) {
+    public Car createCar(String nickName, String make, String model, String year, int miles) {
         ContentValues values = new ContentValues();
+        values.put(CarDatabaseHelper.COLUMN_NICK_NAME, nickName);
         values.put(CarDatabaseHelper.COLUMN_MAKE, make);
+        values.put(CarDatabaseHelper.COLUMN_MODEL, model);
+        values.put(CarDatabaseHelper.COLUMN_YEAR, year);
+        values.put(CarDatabaseHelper.COLUMN_MILES, miles);
         long insertId = mDatabase.insert(CarDatabaseHelper.TABLE_CARS, null, values);
         Cursor cursor = mDatabase.query(CarDatabaseHelper.TABLE_CARS, allColumns, CarDatabaseHelper.COLUMN_ID +
         " = " + insertId, null, null, null, null);
@@ -61,10 +70,11 @@ public class CarDataSource {
     private Car cursorToCar(Cursor cursor) {
         Car car = new Car();
         car.setId(cursor.getLong(0));
-        car.setName(cursor.getString(1));
+        car.setNickName(cursor.getString(1));
         car.setMake(cursor.getString(2));
         car.setModel(cursor.getString(3));
         car.setYear(cursor.getString(4));
+        car.setMiles(cursor.getInt(5));
         return car;
     }
 

@@ -6,11 +6,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import paulklauser.gastracker.R;
+import paulklauser.gastracker.database.Car;
 import paulklauser.gastracker.database.CarDataSource;
 
 public class AddCarActivity extends AppCompatActivity {
 
     private CarDataSource mCarDataSource;
+    Car mCurrentCar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +28,7 @@ public class AddCarActivity extends AppCompatActivity {
     }
 
     public void enterInfoDone(String make, String model, String year) {
-        mCarDataSource.createCar(make, model, year);
+        mCurrentCar = mCarDataSource.createCar(null, make, model, year, 0);
         getFragmentManager()
                 .beginTransaction()
                 .replace(R.id.add_car_frame, new SelectPictureFragment())

@@ -40,6 +40,13 @@ public class AddCarActivity extends AppCompatActivity {
     }
 
     public void selectPictureDone() {
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.add_car_frame, new PictureConfirmationFragment())
+                .commit();
+    }
+
+    public void selectPictureConfirmed() {
 
     }
 

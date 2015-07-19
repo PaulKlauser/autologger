@@ -10,7 +10,10 @@
     <string name="select_picture">Choose a picture for your vehicle</string>
     <string name="picture_from_phone">Choose a picture from your phone</string>
     <string name="take_new_picture">Take a new picture</string>
+    <string name="look_good">Look good?</string>
 
     <!-- General -->
     <string name="next">Next</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

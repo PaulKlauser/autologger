@@ -52,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_above="@id/make"
-                android:src="@drawable/IMG_2611"
+                android:src="@drawable/white_rocket_thumb"
                 android:scaleType="centerCrop"/>
 
 

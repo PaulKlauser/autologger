@@ -19,6 +19,7 @@ public class Car {
     private String mYear;
     private int mMiles;
     private Bitmap mPicture;
+    private String mPicturePath;
 
     public String getNickName() {
         return mNickName;
@@ -73,7 +74,12 @@ public class Car {
         return mPicture;
     }
 
-    public void setPicture(Context context, Uri bitmapUri) {
-        mPicture = BitMapUtils.saveVehicleBitmap(context, bitmapUri, mId);
+    public String getPicturePath() {
+        return mPicturePath;
+    }
+
+    public void setPicture(Bitmap picture, String path) {
+        mPicture = picture;
+        mPicturePath = path;
     }
 }

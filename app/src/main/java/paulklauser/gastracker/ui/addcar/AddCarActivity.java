@@ -2,6 +2,7 @@ package paulklauser.gastracker.ui.addcar;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -11,7 +12,9 @@ import paulklauser.gastracker.database.CarDataSource;
 
 public class AddCarActivity extends AppCompatActivity {
 
-    private CarDataSource mCarDataSource;
+    private static final String DBG_TAG = "AddCarActivity";
+
+    CarDataSource mCarDataSource;
     Car mCurrentCar;
 
     @Override
@@ -28,6 +31,7 @@ public class AddCarActivity extends AppCompatActivity {
     }
 
     public void enterInfoDone(String make, String model, String year) {
+        Log.d(DBG_TAG, "enterInfoDone, make: " + make + " model: " + model + " year: " + year);
         mCurrentCar = mCarDataSource.createCar(null, make, model, year, 0);
         getFragmentManager()
                 .beginTransaction()

@@ -86,6 +86,7 @@ public class SelectPictureFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == SELECT_PHOTO_REQUEST && resultCode == Activity.RESULT_OK) {
             mActivity.mCarDataSource.setPicture(mActivity.mCurrentCar.getId(), data.getData());
+            mActivity.selectPictureDone();
             //mActivity.mCurrentCar.setPicture(data.getData());
         } else if (requestCode == TAKE_PHOTO_REQUEST && resultCode == Activity.RESULT_OK) {
             //mActivity.mCurrentCar.setPicture(mActivity, Uri.fromFile(mPhoto));

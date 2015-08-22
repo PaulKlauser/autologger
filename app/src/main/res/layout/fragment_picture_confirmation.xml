@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/look_good"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="@dimen/abc_text_size_large_material"/>
+    <ImageView
+        android:id="@+id/picture"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/white_rocket_thumb"
+        android:layout_centerVertical="true"/>
+    <Button
+        android:id="@+id/yes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/borderlessButtonStyle"
+        android:text="@string/yes"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"/>
+    <Button
+        android:id="@+id/no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/borderlessButtonStyle"
+        android:text="@string/no"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@id/yes"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"/>
+
+</RelativeLayout>

@@ -25,8 +25,8 @@ public class Car {
         return mNickName;
     }
 
-    public void setNickName(String name) {
-        mNickName = mNickName;
+    public void setNickName(String nickName) {
+        mNickName = nickName;
     }
 
     public String getMake() {
@@ -34,7 +34,7 @@ public class Car {
     }
 
     public void setMake(String make) {
-        mMake = mMake;
+        mMake = make;
     }
 
     public String getModel() {
@@ -42,7 +42,7 @@ public class Car {
     }
 
     public void setModel(String model) {
-        mModel = mModel;
+        mModel = model;
     }
 
     public String getYear() {
@@ -50,7 +50,7 @@ public class Car {
     }
 
     public void setYear(String year) {
-        mYear = mYear;
+        mYear = year;
     }
 
     public int getMiles() {
@@ -58,7 +58,7 @@ public class Car {
     }
 
     public void setMiles(int miles) {
-        mMiles = mMiles;
+        mMiles = miles;
     }
 
 

@@ -44,9 +44,9 @@ public class AddCarActivity extends BaseActivity {
                 .commit();
     }
 
-    public void selectPictureDone(Intent data) {
+    public void selectPictureDone(Uri imageUri) {
         Bundle args = new Bundle();
-        args.putParcelable("Intent", data);
+        args.putParcelable("Intent", imageUri);
         PictureConfirmationFragment frag = new PictureConfirmationFragment();
         frag.setArguments(args);
         getFragmentManager()

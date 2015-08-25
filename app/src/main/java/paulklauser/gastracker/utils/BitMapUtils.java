@@ -24,6 +24,7 @@ public class BitMapUtils {
         // Decode image size
         BitmapFactory.Options o = new BitmapFactory.Options();
         o.inJustDecodeBounds = true;
+        Log.d(DBG_TAG, bitmapUri.toString());
         BitmapFactory.decodeStream(context.getContentResolver().openInputStream(bitmapUri), null, o);
 
         // The new size we want to scale to

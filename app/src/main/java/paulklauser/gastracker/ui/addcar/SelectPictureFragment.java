@@ -126,7 +126,7 @@ public class SelectPictureFragment extends Fragment {
     private void handleCrop(int resultCode, Intent result) {
         if (resultCode == Activity.RESULT_OK) {
             //resultView.setImageURI(Crop.getOutput(result));
-            mActivity.selectPictureDone(result);
+            mActivity.selectPictureDone(Crop.getOutput(result));
         } else if (resultCode == Crop.RESULT_ERROR) {
             //Toast.makeText(this, Crop.getError(result).getMessage(), Toast.LENGTH_SHORT).show();
         }

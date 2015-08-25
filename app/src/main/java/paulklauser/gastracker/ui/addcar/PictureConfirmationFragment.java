@@ -67,8 +67,7 @@ public class PictureConfirmationFragment extends Fragment {
         mActivity = (AddCarActivity)getActivity();
         Log.d("PictureFrag", "Setting dat imageView");
         //Dis crop crap doesn't work on all devices....
-        Intent intent = (Intent) getArguments().get("Intent");
-        mImageUri = intent.getData();
+        mImageUri = (Uri) getArguments().get("Intent");
         //mBitmap = intent.getExtras().getParcelable("data");
         try {
             Bitmap bm = BitMapUtils.getScaledBitmap(getActivity(), mImageUri);

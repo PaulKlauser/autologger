@@ -1,5 +1,7 @@
 package paulklauser.gastracker.ui.addcar;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +11,7 @@ import android.view.MenuItem;
 import paulklauser.gastracker.R;
 import paulklauser.gastracker.database.Car;
 import paulklauser.gastracker.database.CarDataSource;
+import paulklauser.gastracker.ui.carlist.CarListActivity;
 
 public class AddCarActivity extends AppCompatActivity {
 
@@ -39,15 +42,22 @@ public class AddCarActivity extends AppCompatActivity {
                 .commit();
     }
 
-    public void selectPictureDone() {
+    public void selectPictureDone(Intent data) {
+        Bundle args = new Bundle();
+        args.putParcelable("Intent", data);
+        PictureConfirmationFragment frag = new PictureConfirmationFragment();
+        frag.setArguments(args);
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.add_car_frame, new PictureConfirmationFragment())
+                .replace(R.id.add_car_frame, frag)
                 .commit();
     }
 
-    public void selectPictureConfirmed() {
-
+    public void selectPictureConfirmed(Uri pictureUri) {
+        mCarDataSource.setPicture(mCurrentCar.getId(), pictureUri);
+        Intent intent = new Intent(this, CarListActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override

@@ -74,17 +74,17 @@ public class Car {
         mId = id;
     }
 
-    public Bitmap getPicture() {
-        Bitmap bm = BitmapFactory.decodeFile(mPicturePath);
-        return BitmapFactory.decodeFile(mPicturePath);
-    }
+//    public Bitmap getPicture() {
+//        Bitmap bm = BitmapFactory.decodeFile(mPicturePath);
+//        return BitmapFactory.decodeFile(mPicturePath);
+//    }
 
     public String getPicturePath() {
         Log.d(DBG_TAG, "getPicturePath: " + mPicturePath);
         return mPicturePath;
     }
 
-    public void setPicture(String path) {
+    public void setPicturePath(String path) {
         //mPicture = picture;
         Log.d(DBG_TAG, "Setting picture path to: " + path);
         mPicturePath = path;

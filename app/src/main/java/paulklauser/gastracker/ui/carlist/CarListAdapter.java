@@ -54,7 +54,7 @@ public class CarListAdapter extends RecyclerView.Adapter<CarListAdapter.ViewHold
         holder.model.setText(car.getModel());
         holder.year.setText(car.getYear());
         holder.odometer.setText(String.valueOf(car.getMiles()));
-        holder.image.setImageBitmap(car.getPicture());
+        //holder.image.setImageBitmap(car.getPicture());
     }
 
 

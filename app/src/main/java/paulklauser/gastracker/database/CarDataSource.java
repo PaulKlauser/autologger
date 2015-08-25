@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.util.Log;
 
@@ -97,14 +96,14 @@ public class CarDataSource {
     }
 
     public void setPicture(long carId, Uri pictureUri) {
-        Log.d(DBG_TAG, "setPicture with carID: " + carId);
+        Log.d(DBG_TAG, "setPicturePath with carID: " + carId);
         Cursor cursor = mDatabase.query(CarDatabaseHelper.TABLE_CARS, allColumns,
                 CarDatabaseHelper.COLUMN_ID + " = " + carId, null, null, null, null);
         cursor.moveToFirst();
         Car car = cursorToCar(cursor);
         cursor.close();
         BitMapUtils.saveVehicleBitmap(mContext, pictureUri, carId);
-        car.setPicture(mContext.getFilesDir().getPath() + "/" + carId);
+        car.setPicturePath(mContext.getFilesDir().getPath() + "/" + carId);
         updateCar(car);
     }
 
@@ -116,7 +115,7 @@ public class CarDataSource {
         car.setModel(cursor.getString(3));
         car.setYear(cursor.getString(4));
         car.setMiles(cursor.getInt(5));
-        car.setPicture(cursor.getString(6));
+        car.setPicturePath(cursor.getString(6));
         return car;
     }
 

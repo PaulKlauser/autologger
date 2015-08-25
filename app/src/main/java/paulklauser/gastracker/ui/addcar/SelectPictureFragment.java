@@ -85,11 +85,11 @@ public class SelectPictureFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == SELECT_PHOTO_REQUEST && resultCode == Activity.RESULT_OK) {
-            mActivity.mCarDataSource.setPicture(mActivity.mCurrentCar.getId(), data.getData());
-            mActivity.selectPictureDone();
-            //mActivity.mCurrentCar.setPicture(data.getData());
+            //mActivity.mCarDataSource.setPicture(mActivity.mCurrentCar.getId(), data.getData());
+            //mActivity.mCurrentCar.setPicturePath(data.getData().toString());
+            mActivity.selectPictureDone(data);
         } else if (requestCode == TAKE_PHOTO_REQUEST && resultCode == Activity.RESULT_OK) {
-            //mActivity.mCurrentCar.setPicture(mActivity, Uri.fromFile(mPhoto));
+            //mActivity.mCurrentCar.setPicturePath(mActivity, Uri.fromFile(mPhoto));
             mActivity.mCarDataSource.setPicture(mActivity.mCurrentCar.getId(), Uri.fromFile(mPhoto));
         }
     }

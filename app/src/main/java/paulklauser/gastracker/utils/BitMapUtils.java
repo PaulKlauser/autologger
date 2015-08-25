@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,6 +16,8 @@ import java.io.OutputStream;
  * Created by Paul on 7/19/2015.
  */
 public class BitMapUtils {
+
+    private static final String DBG_TAG = "BitMapUtils";
 
     public static Bitmap getScaledBitmap(Context context, Uri bitmapUri) throws FileNotFoundException {
 
@@ -53,9 +56,9 @@ public class BitMapUtils {
             bitmap = getScaledBitmap(context, bitmapUri);
             //InputStream inputStream = bitmap.get
 
-            outputStream = context.openFileOutput(String.valueOf(vehicleId), Context.MODE_PRIVATE);
+            outputStream = context.openFileOutput(String.valueOf(vehicleId) + ".png", Context.MODE_PRIVATE);
 
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+            Log.d(DBG_TAG, String.valueOf(bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)));
 //            byte buffer[] = new byte[1024];
 //            int length = 0;
 //
@@ -70,6 +73,7 @@ public class BitMapUtils {
         } finally {
             try {
                 if (outputStream != null) {
+                    outputStream.flush();
                     outputStream.close();
                 }
             } catch (IOException e) {

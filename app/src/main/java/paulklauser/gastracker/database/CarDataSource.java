@@ -103,7 +103,8 @@ public class CarDataSource {
         cursor.moveToFirst();
         Car car = cursorToCar(cursor);
         cursor.close();
-        car.setPicture(BitMapUtils.saveVehicleBitmap(mContext, pictureUri, carId), mContext.getFilesDir().getPath() + "/" + car.getId());
+        BitMapUtils.saveVehicleBitmap(mContext, pictureUri, carId);
+        car.setPicture(mContext.getFilesDir().getPath() + "/" + carId);
         updateCar(car);
     }
 
@@ -115,7 +116,7 @@ public class CarDataSource {
         car.setModel(cursor.getString(3));
         car.setYear(cursor.getString(4));
         car.setMiles(cursor.getInt(5));
-        car.setPicture(BitmapFactory.decodeFile(cursor.getString(6)), cursor.getString(6));
+        car.setPicture(cursor.getString(6));
         return car;
     }
 

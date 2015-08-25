@@ -19,7 +19,6 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/white_rocket_thumb"
         android:layout_centerVertical="true"/>
     <Button
         android:id="@+id/yes"

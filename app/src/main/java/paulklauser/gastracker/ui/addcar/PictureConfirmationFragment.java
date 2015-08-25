@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ public class PictureConfirmationFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mPicture.setImageBitmap(((AddCarActivity)getActivity()).mCurrentCar.getPicture());
+        Log.d("PictureFrag", "Setting dat imageView");
+        mPicture.setImageBitmap(((AddCarActivity) getActivity()).mCurrentCar.getPicture());
     }
 }

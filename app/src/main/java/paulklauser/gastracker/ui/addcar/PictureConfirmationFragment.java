@@ -49,7 +49,7 @@ public class PictureConfirmationFragment extends Fragment {
         mYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mActivity.selectPictureConfirmed(mBitmap);
+                mActivity.selectPictureConfirmed(mImageUri);
             }
         });
 
@@ -66,13 +66,15 @@ public class PictureConfirmationFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mActivity = (AddCarActivity)getActivity();
         Log.d("PictureFrag", "Setting dat imageView");
+        //Dis crop crap doesn't work on all devices....
         Intent intent = (Intent) getArguments().get("Intent");
-        mBitmap = intent.getExtras().getParcelable("data");
-        //try {
-            //Bitmap bm = BitMapUtils.getScaledBitmap(getActivity(), mImageUri);
-            mPicture.setImageBitmap(mBitmap);
-        //} catch (FileNotFoundException e) {
-           // e.printStackTrace();
-        //}
+        mImageUri = intent.getData();
+        //mBitmap = intent.getExtras().getParcelable("data");
+        try {
+            Bitmap bm = BitMapUtils.getScaledBitmap(getActivity(), mImageUri);
+            mPicture.setImageBitmap(bm);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

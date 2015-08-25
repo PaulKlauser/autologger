@@ -87,19 +87,25 @@ public class EnterInfoFragment extends Fragment implements EdmundsHelper.LoadMak
 
     @Override
     public void onMakesLoaded(ArrayList<String> carMakes) {
-        mMake.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line,
-                carMakes));
+        if (isVisible()) {
+            mMake.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line,
+                    carMakes));
+        }
     }
 
     @Override
     public void onModelsLoaded(ArrayList<String> carModels) {
-        mModel.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line,
-                carModels));
+        if (isVisible()) {
+            mModel.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line,
+                    carModels));
+        }
     }
 
     @Override
     public void onYearsLoaded(ArrayList<String> carYears) {
-        mModel.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line,
-                carYears));
+        if (isVisible()) {
+            mModel.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line,
+                    carYears));
+        }
     }
 }

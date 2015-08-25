@@ -48,12 +48,12 @@ public class BitMapUtils {
         return BitmapFactory.decodeStream(context.getContentResolver().openInputStream(bitmapUri), null, o2);
     }
 
-    public static Bitmap saveVehicleBitmap(Context context, Bitmap bitmap, long vehicleId) {
+    public static Bitmap saveVehicleBitmap(Context context, Uri imageUri, long vehicleId) {
         OutputStream outputStream = null;
-        //Bitmap bitmap= null;
+        Bitmap bitmap= null;
         try {
-            //InputStream inputStream = context.getContentResolver().openInputStream(bitmapUri);
-            //bitmap = getScaledBitmap(context, bitmapUri);
+//            InputStream inputStream = context.getContentResolver().openInputStream(imageUri);
+            bitmap = getScaledBitmap(context, imageUri);
             //InputStream inputStream = bitmap.get
 
             outputStream = context.openFileOutput(String.valueOf(vehicleId) + ".png", Context.MODE_PRIVATE);

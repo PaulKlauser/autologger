@@ -96,14 +96,14 @@ public class CarDataSource {
         return cars;
     }
 
-    public void setPicture(long carId, Bitmap bitmap) {
+    public void setPicture(long carId, Uri imageUri) {
         Log.d(DBG_TAG, "setPicturePath with carID: " + carId);
         Cursor cursor = mDatabase.query(CarDatabaseHelper.TABLE_CARS, allColumns,
                 CarDatabaseHelper.COLUMN_ID + " = " + carId, null, null, null, null);
         cursor.moveToFirst();
         Car car = cursorToCar(cursor);
         cursor.close();
-        BitMapUtils.saveVehicleBitmap(mContext, bitmap, carId);
+        BitMapUtils.saveVehicleBitmap(mContext, imageUri, carId);
         car.setPicturePath(mContext.getFilesDir().getPath() + "/" + carId + ".png");
         updateCar(car);
     }

@@ -55,8 +55,8 @@ public class AddCarActivity extends BaseActivity {
                 .commit();
     }
 
-    public void selectPictureConfirmed(Bitmap bitmap) {
-        mCarDataSource.setPicture(mCurrentCar.getId(), bitmap);
+    public void selectPictureConfirmed(Uri imageUri) {
+        mCarDataSource.setPicture(mCurrentCar.getId(), imageUri);
         Intent intent = new Intent(this, CarListActivity.class);
         intent.setAction("Initialized");
         startActivity(intent);

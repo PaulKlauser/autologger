@@ -19,6 +19,7 @@ public class CarListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_list);
         CarDataSource carDataSource = new CarDataSource(this);
+        carDataSource.open();
         RecyclerView carList = (RecyclerView) findViewById(R.id.car_list);
         CarListAdapter adapter = new CarListAdapter(carDataSource.getAllCars());
         carList.setAdapter(adapter);

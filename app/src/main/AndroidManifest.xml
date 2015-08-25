@@ -13,13 +13,14 @@
         <activity
             android:name=".ui.addcar.AddCarActivity"
             android:label="@string/title_activity_add_car"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.carlist.CarListActivity">
             <intent-filter>
-                <action android:name="ANDROID.INTENT.ACTION.MAIN"/>
+                <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.carlist.CarListActivity"/>
     </application>
 
 </manifest>

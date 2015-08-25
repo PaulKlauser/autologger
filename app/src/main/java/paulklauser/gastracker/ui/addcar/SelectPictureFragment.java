@@ -57,7 +57,7 @@ public class SelectPictureFragment extends Fragment {
                 photoPickerIntent.putExtra("aspectX", 2);
                 photoPickerIntent.putExtra("aspectY", 1);
                 photoPickerIntent.putExtra("outputX", 128);
-                photoPickerIntent.putExtra("outputY", 128);
+                photoPickerIntent.putExtra("outputY", 64);
                 photoPickerIntent.putExtra("return-data", true);
                 photoPickerIntent.setType("image/*");
                 startActivityForResult(photoPickerIntent, SELECT_PHOTO_REQUEST);

@@ -1,6 +1,7 @@
 package paulklauser.gastracker.ui.addcar;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -54,8 +55,8 @@ public class AddCarActivity extends BaseActivity {
                 .commit();
     }
 
-    public void selectPictureConfirmed(Uri pictureUri) {
-        mCarDataSource.setPicture(mCurrentCar.getId(), pictureUri);
+    public void selectPictureConfirmed(Bitmap bitmap) {
+        mCarDataSource.setPicture(mCurrentCar.getId(), bitmap);
         Intent intent = new Intent(this, CarListActivity.class);
         intent.setAction("Initialized");
         startActivity(intent);

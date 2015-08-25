@@ -18,6 +18,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import paulklauser.gastracker.R;
+import paulklauser.gastracker.utils.BitMapUtils;
 
 /**
  * Created by Paul on 7/19/2015.
@@ -29,6 +30,7 @@ public class PictureConfirmationFragment extends Fragment {
     private Button mNo;
     private AddCarActivity mActivity;
     private Uri mImageUri;
+    private Bitmap mBitmap;
 
     @Nullable
     @Override
@@ -47,7 +49,7 @@ public class PictureConfirmationFragment extends Fragment {
         mYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mActivity.selectPictureConfirmed(mImageUri);
+                mActivity.selectPictureConfirmed(mBitmap);
             }
         });
 
@@ -65,7 +67,12 @@ public class PictureConfirmationFragment extends Fragment {
         mActivity = (AddCarActivity)getActivity();
         Log.d("PictureFrag", "Setting dat imageView");
         Intent intent = (Intent) getArguments().get("Intent");
-        mImageUri = intent.getData();
-        mPicture.setImageURI(mImageUri);
+        mBitmap = intent.getExtras().getParcelable("data");
+        //try {
+            //Bitmap bm = BitMapUtils.getScaledBitmap(getActivity(), mImageUri);
+            mPicture.setImageBitmap(mBitmap);
+        //} catch (FileNotFoundException e) {
+           // e.printStackTrace();
+        //}
     }
 }

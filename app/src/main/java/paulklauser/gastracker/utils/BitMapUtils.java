@@ -27,7 +27,7 @@ public class BitMapUtils {
         BitmapFactory.decodeStream(context.getContentResolver().openInputStream(bitmapUri), null, o);
 
         // The new size we want to scale to
-        final int REQUIRED_SIZE = 140;
+        final int REQUIRED_SIZE = 600;
 
         // Find the correct scale value. It should be the power of 2.
         int width_tmp = o.outWidth, height_tmp = o.outHeight;
@@ -48,12 +48,12 @@ public class BitMapUtils {
         return BitmapFactory.decodeStream(context.getContentResolver().openInputStream(bitmapUri), null, o2);
     }
 
-    public static Bitmap saveVehicleBitmap(Context context, Uri bitmapUri, long vehicleId) {
+    public static Bitmap saveVehicleBitmap(Context context, Bitmap bitmap, long vehicleId) {
         OutputStream outputStream = null;
-        Bitmap bitmap= null;
+        //Bitmap bitmap= null;
         try {
             //InputStream inputStream = context.getContentResolver().openInputStream(bitmapUri);
-            bitmap = getScaledBitmap(context, bitmapUri);
+            //bitmap = getScaledBitmap(context, bitmapUri);
             //InputStream inputStream = bitmap.get
 
             outputStream = context.openFileOutput(String.valueOf(vehicleId) + ".png", Context.MODE_PRIVATE);

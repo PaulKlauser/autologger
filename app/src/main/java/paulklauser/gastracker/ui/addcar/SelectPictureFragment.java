@@ -53,6 +53,12 @@ public class SelectPictureFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+                photoPickerIntent.putExtra("crop", "true");
+                photoPickerIntent.putExtra("aspectX", 2);
+                photoPickerIntent.putExtra("aspectY", 1);
+                photoPickerIntent.putExtra("outputX", 128);
+                photoPickerIntent.putExtra("outputY", 128);
+                photoPickerIntent.putExtra("return-data", true);
                 photoPickerIntent.setType("image/*");
                 startActivityForResult(photoPickerIntent, SELECT_PHOTO_REQUEST);
             }
@@ -90,7 +96,7 @@ public class SelectPictureFragment extends Fragment {
             mActivity.selectPictureDone(data);
         } else if (requestCode == TAKE_PHOTO_REQUEST && resultCode == Activity.RESULT_OK) {
             //mActivity.mCurrentCar.setPicturePath(mActivity, Uri.fromFile(mPhoto));
-            mActivity.mCarDataSource.setPicture(mActivity.mCurrentCar.getId(), Uri.fromFile(mPhoto));
+            //mActivity.mCarDataSource.setPicture(mActivity.mCurrentCar.getId(), Uri.fromFile(mPhoto));
         }
     }
 

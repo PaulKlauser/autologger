@@ -1,5 +1,6 @@
 package paulklauser.gastracker.ui.carlist;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,11 +9,13 @@ import android.widget.ListView;
 
 import paulklauser.gastracker.R;
 import paulklauser.gastracker.database.CarDataSource;
+import paulklauser.gastracker.ui.BaseActivity;
+import paulklauser.gastracker.ui.addcar.AddCarActivity;
 
 /**
  * Created by Paul on 6/13/2015.
  */
-public class CarListActivity extends AppCompatActivity {
+public class CarListActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,5 +27,16 @@ public class CarListActivity extends AppCompatActivity {
         CarListAdapter adapter = new CarListAdapter(carDataSource.getAllCars());
         carList.setAdapter(adapter);
         carList.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        if (getIntent().getAction().equals("Initialized")) {
+            setIsFirstLaunch(false);
+        } else if (isFirstLaunch()) {
+            Intent intent = new Intent(this, AddCarActivity.class);
+            startActivity(intent);
+        }
     }
 }

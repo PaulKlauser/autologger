@@ -11,9 +11,10 @@ import android.view.MenuItem;
 import paulklauser.gastracker.R;
 import paulklauser.gastracker.database.Car;
 import paulklauser.gastracker.database.CarDataSource;
+import paulklauser.gastracker.ui.BaseActivity;
 import paulklauser.gastracker.ui.carlist.CarListActivity;
 
-public class AddCarActivity extends AppCompatActivity {
+public class AddCarActivity extends BaseActivity {
 
     private static final String DBG_TAG = "AddCarActivity";
 
@@ -56,6 +57,7 @@ public class AddCarActivity extends AppCompatActivity {
     public void selectPictureConfirmed(Uri pictureUri) {
         mCarDataSource.setPicture(mCurrentCar.getId(), pictureUri);
         Intent intent = new Intent(this, CarListActivity.class);
+        intent.setAction("Initialized");
         startActivity(intent);
         finish();
     }

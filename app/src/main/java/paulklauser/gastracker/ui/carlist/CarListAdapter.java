@@ -1,5 +1,7 @@
 package paulklauser.gastracker.ui.carlist;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,7 +56,8 @@ public class CarListAdapter extends RecyclerView.Adapter<CarListAdapter.ViewHold
         holder.model.setText(car.getModel());
         holder.year.setText(car.getYear());
         holder.odometer.setText(String.valueOf(car.getMiles()));
-        //holder.image.setImageBitmap(car.getPicture());
+        Bitmap bm = BitmapFactory.decodeFile(car.getPicturePath());
+        holder.image.setImageBitmap(bm);
     }
 
 

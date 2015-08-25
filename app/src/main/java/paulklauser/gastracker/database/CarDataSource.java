@@ -103,7 +103,7 @@ public class CarDataSource {
         Car car = cursorToCar(cursor);
         cursor.close();
         BitMapUtils.saveVehicleBitmap(mContext, pictureUri, carId);
-        car.setPicturePath(mContext.getFilesDir().getPath() + "/" + carId);
+        car.setPicturePath(mContext.getFilesDir().getPath() + "/" + carId + ".png");
         updateCar(car);
     }
 

@@ -104,6 +104,7 @@ public class SelectPictureFragment extends Fragment {
         } else if (requestCode == TAKE_PHOTO_REQUEST && resultCode == Activity.RESULT_OK) {
             //mActivity.mCurrentCar.setPicturePath(mActivity, Uri.fromFile(mPhoto));
             //mActivity.mCarDataSource.setPicture(mActivity.mCurrentCar.getId(), Uri.fromFile(mPhoto));
+            beginCrop(Uri.fromFile(mPhoto));
         } else if (requestCode == Crop.REQUEST_PICK && resultCode == Activity.RESULT_OK) {
             beginCrop(data.getData());
         } else if (requestCode == Crop.REQUEST_CROP) {

@@ -8,10 +8,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.soundcloud.android.crop.Crop;
 
 import java.io.File;
 import java.io.IOException;
@@ -53,14 +57,15 @@ public class SelectPictureFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-                photoPickerIntent.putExtra("crop", "true");
-                photoPickerIntent.putExtra("aspectX", 2);
-                photoPickerIntent.putExtra("aspectY", 1);
-                photoPickerIntent.putExtra("outputX", 128);
-                photoPickerIntent.putExtra("outputY", 64);
-                photoPickerIntent.putExtra("return-data", true);
+////                photoPickerIntent.putExtra("crop", "true");
+////                photoPickerIntent.putExtra("aspectX", 2);
+////                photoPickerIntent.putExtra("aspectY", 1);
+////                photoPickerIntent.putExtra("outputX", 128);
+////                photoPickerIntent.putExtra("outputY", 64);
+////                photoPickerIntent.putExtra("return-data", true);
                 photoPickerIntent.setType("image/*");
                 startActivityForResult(photoPickerIntent, SELECT_PHOTO_REQUEST);
+//                Crop.pickImage(getActivity());
             }
         });
 
@@ -93,10 +98,17 @@ public class SelectPictureFragment extends Fragment {
         if (requestCode == SELECT_PHOTO_REQUEST && resultCode == Activity.RESULT_OK) {
             //mActivity.mCarDataSource.setPicture(mActivity.mCurrentCar.getId(), data.getData());
             //mActivity.mCurrentCar.setPicturePath(data.getData().toString());
-            mActivity.selectPictureDone(data);
+            //Crop.of(data.getData(), )
+            //mActivity.selectPictureDone(data);
+            beginCrop(data.getData());
         } else if (requestCode == TAKE_PHOTO_REQUEST && resultCode == Activity.RESULT_OK) {
             //mActivity.mCurrentCar.setPicturePath(mActivity, Uri.fromFile(mPhoto));
             //mActivity.mCarDataSource.setPicture(mActivity.mCurrentCar.getId(), Uri.fromFile(mPhoto));
+            beginCrop(Uri.fromFile(mPhoto));
+        } else if (requestCode == Crop.REQUEST_PICK && resultCode == Activity.RESULT_OK) {
+            beginCrop(data.getData());
+        } else if (requestCode == Crop.REQUEST_CROP) {
+            handleCrop(resultCode, data);
         }
     }
 
@@ -104,5 +116,20 @@ public class SelectPictureFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mActivity = (AddCarActivity) getActivity();
+    }
+
+    private void beginCrop(Uri source) {
+        Uri destination = Uri.fromFile(new File(getActivity().getCacheDir(), "cropped"));
+
+        Crop.of(source, destination).asSquare().start(getActivity(), this);
+    }
+
+    private void handleCrop(int resultCode, Intent result) {
+        if (resultCode == Activity.RESULT_OK) {
+            //resultView.setImageURI(Crop.getOutput(result));
+            mActivity.selectPictureDone(Crop.getOutput(result));
+        } else if (resultCode == Crop.RESULT_ERROR) {
+            //Toast.makeText(this, Crop.getError(result).getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 }

@@ -44,9 +44,9 @@ public class AddCarActivity extends BaseActivity {
                 .commit();
     }
 
-    public void selectPictureDone(Intent data) {
+    public void selectPictureDone(Uri imageUri) {
         Bundle args = new Bundle();
-        args.putParcelable("Intent", data);
+        args.putParcelable("Intent", imageUri);
         PictureConfirmationFragment frag = new PictureConfirmationFragment();
         frag.setArguments(args);
         getFragmentManager()
@@ -55,26 +55,11 @@ public class AddCarActivity extends BaseActivity {
                 .commit();
     }
 
-    public void selectPictureConfirmed(Bitmap bitmap) {
-        mCarDataSource.setPicture(mCurrentCar.getId(), bitmap);
+    public void selectPictureConfirmed(Uri imageUri) {
+        mCarDataSource.setPicture(mCurrentCar.getId(), imageUri);
         Intent intent = new Intent(this, CarListActivity.class);
         intent.setAction("Initialized");
         startActivity(intent);
         finish();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

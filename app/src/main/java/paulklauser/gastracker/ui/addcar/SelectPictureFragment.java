@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -76,7 +77,8 @@ public class SelectPictureFragment extends Fragment {
                 if (takePictureIntent.resolveActivity(mActivity.getPackageManager()) != null) {
                     //try {
                     try {
-                        mPhoto = File.createTempFile(String.valueOf(mActivity.mCurrentCar.getId()) + System.currentTimeMillis(), ".png");
+                        File storageDir = Environment.getExternalStorageDirectory();
+                        mPhoto = File.createTempFile(String.valueOf(mActivity.mCurrentCar.getId()) + System.currentTimeMillis(), ".png", storageDir);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

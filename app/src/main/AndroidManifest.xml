@@ -24,6 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
+        <activity android:name=".ui.cardetails.CarDetailsActivity"/>
     </application>
 
 </manifest>

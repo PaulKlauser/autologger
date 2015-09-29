@@ -17,4 +17,5 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="add_car">Add Car</string>
+    <string name="delete_car">Delete Car</string>
 </resources>

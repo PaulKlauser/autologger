@@ -1,8 +1,12 @@
 package paulklauser.gastracker.ui.carlist;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,14 +23,15 @@ import paulklauser.gastracker.database.Car;
  */
 public class CarListAdapter extends RecyclerView.Adapter<CarListAdapter.ViewHolder> {
 
-    private List<Car> mCars;
+    private static final String DBG_TAG = "CarListAdapter";
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView make;
         public TextView model;
         public TextView year;
         public TextView odometer;
         public ImageView image;
+        public CardView cardView;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -35,11 +40,25 @@ public class CarListAdapter extends RecyclerView.Adapter<CarListAdapter.ViewHold
             year = (TextView) itemView.findViewById(R.id.year);
             odometer = (TextView) itemView.findViewById(R.id.odometer);
             image = (ImageView) itemView.findViewById(R.id.image);
+            cardView = (CardView) itemView.findViewById(R.id.car_card);
+        }
+
+        @Override
+        public void onClick(View v) {
+
         }
     }
 
-    public CarListAdapter(List<Car> cars) {
+    interface CarListAdapterListener {
+        void onCarClicked(int carIndex);
+    }
+
+    private List<Car> mCars;
+    private CarListAdapterListener mListener;
+
+    public CarListAdapter(List<Car> cars, CarListAdapterListener listener) {
         mCars = cars;
+        mListener = listener;
     }
 
     @Override
@@ -49,7 +68,7 @@ public class CarListAdapter extends RecyclerView.Adapter<CarListAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         Car car = mCars.get(position);
         holder.make.setText(car.getMake());
         holder.model.setText(car.getModel());
@@ -57,6 +76,13 @@ public class CarListAdapter extends RecyclerView.Adapter<CarListAdapter.ViewHold
         holder.odometer.setText(String.valueOf(car.getMiles()));
         Bitmap bm = BitmapFactory.decodeFile(car.getPicturePath());
         holder.image.setImageBitmap(bm);
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(DBG_TAG, "Car Clicked!");
+                mListener.onCarClicked(position);
+            }
+        });
     }
 
 

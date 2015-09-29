@@ -5,19 +5,27 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import java.util.List;
+
 import paulklauser.gastracker.R;
+import paulklauser.gastracker.database.Car;
 import paulklauser.gastracker.database.CarDataSource;
 import paulklauser.gastracker.ui.BaseActivity;
 import paulklauser.gastracker.ui.addcar.AddCarActivity;
+import paulklauser.gastracker.ui.cardetails.CarDetailsActivity;
 
 /**
  * Created by Paul on 6/13/2015.
  */
-public class CarListActivity extends BaseActivity {
+public class CarListActivity extends BaseActivity implements CarListAdapter.CarListAdapterListener {
+
+    List<Car> mCars;
+    private static final String DBG_TAG = "CarListActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +34,8 @@ public class CarListActivity extends BaseActivity {
         CarDataSource carDataSource = new CarDataSource(this);
         carDataSource.open();
         RecyclerView carList = (RecyclerView) findViewById(R.id.car_list);
-        CarListAdapter adapter = new CarListAdapter(carDataSource.getAllCars());
+        mCars = carDataSource.getAllCars();
+        CarListAdapter adapter = new CarListAdapter(mCars, this);
         carList.setAdapter(adapter);
         carList.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -56,5 +65,13 @@ public class CarListActivity extends BaseActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onCarClicked(int carIndex) {
+        Log.d(DBG_TAG, "onCarClicked");
+        Intent intent = new Intent(this, CarDetailsActivity.class);
+        intent.putExtra("car", mCars.get(carIndex));
+        startActivity(intent);
     }
 }

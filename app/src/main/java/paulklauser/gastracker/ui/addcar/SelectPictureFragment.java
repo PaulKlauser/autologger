@@ -57,7 +57,9 @@ public class SelectPictureFragment extends Fragment {
         choosePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+                Intent getIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                getIntent.setType("image/*");
+                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 ////                photoPickerIntent.putExtra("crop", "true");
 ////                photoPickerIntent.putExtra("aspectX", 2);
 ////                photoPickerIntent.putExtra("aspectY", 1);
@@ -65,7 +67,11 @@ public class SelectPictureFragment extends Fragment {
 ////                photoPickerIntent.putExtra("outputY", 64);
 ////                photoPickerIntent.putExtra("return-data", true);
                 photoPickerIntent.setType("image/*");
-                startActivityForResult(photoPickerIntent, SELECT_PHOTO_REQUEST);
+                Intent chooserIntent = Intent.createChooser(getIntent, "Select Image");
+                chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[] {photoPickerIntent});
+                startActivityForResult(chooserIntent, SELECT_PHOTO_REQUEST);
+
+                //startActivityForResult(photoPickerIntent, SELECT_PHOTO_REQUEST);
 //                Crop.pickImage(getActivity());
             }
         });

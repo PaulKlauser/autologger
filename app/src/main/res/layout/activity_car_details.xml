@@ -15,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="?attr/colorPrimary"
             android:fitsSystemWindows="true">
             <ImageView
                 android:id="@+id/car_image"
@@ -27,9 +28,23 @@
                 android:layout_height="?attr/actionBarSize"
                 android:id="@+id/toolbar"
                 layout="@layout/component_toolbar"
-                app:titleTextColor="@android:color/primary_text_dark"/>
+                app:titleTextColor="@android:color/primary_text_dark"
+                app:layout_collapseMode="pin"/>
 
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1000dp">
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
 
 </android.support.design.widget.CoordinatorLayout>

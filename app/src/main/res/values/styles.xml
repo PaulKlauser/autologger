@@ -10,5 +10,11 @@
 
     <color name="blue">#00CCFF</color>
     <color name="blue_dark">#008FB2</color>
+    <color name="dim_foreground_light_disabled">#80323232</color>
+
+    <style name="HeaderTitleStyle" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/blue_dark</item>
+        <item name="android:textSize">30sp</item>
+    </style>
 
 </resources>

@@ -2,6 +2,7 @@
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coord"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -22,15 +23,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:scaleType="centerCrop"
+                android:fitsSystemWindows="true"
+                app:layout_collapseMode="parallax"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/image_gradient"
                 android:fitsSystemWindows="true"/>
             <android.support.v7.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:id="@+id/toolbar"
                 layout="@layout/component_toolbar"
-                app:titleTextColor="@android:color/primary_text_dark"
                 app:layout_collapseMode="pin"/>
-
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
     <android.support.v4.widget.NestedScrollView
@@ -41,10 +46,41 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1000dp">
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/best_mileage_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="Best Mileage:"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="Past Mileage:"
+                        android:layout_below="@id/best_mileage_title"/>
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
 
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:src="@drawable/ic_local_gas_station_24dp"
+        android:foregroundGravity="bottom|right"
+        app:layout_anchor="@id/coord"
+        app:layout_anchorGravity="bottom|right"
+        android:layout_margin="20dp"/>
 
 
 </android.support.design.widget.CoordinatorLayout>

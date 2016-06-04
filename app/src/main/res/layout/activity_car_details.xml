@@ -7,41 +7,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/scroll_view"
+    <FrameLayout
+        android:id="@+id/content_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_marginTop="250dp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="1000dp">
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:id="@+id/best_mileage_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="Best Mileage:"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="Past Mileage:"
-                        android:layout_below="@id/best_mileage_title"/>
-                </RelativeLayout>
 
-            </android.support.v7.widget.CardView>
+    <!--<android.support.v4.widget.NestedScrollView-->
+        <!--android:id="@+id/content_container"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
 
-        </LinearLayout>
 
-    </android.support.v4.widget.NestedScrollView>
+
+    <!--</android.support.v4.widget.NestedScrollView>-->
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
@@ -80,6 +61,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/log_miles"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:src="@drawable/ic_local_gas_station_24dp"

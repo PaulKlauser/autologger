@@ -3,6 +3,8 @@ package paulklauser.gastracker.ui.cardetails;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ImageView;
 
 import paulklauser.gastracker.R;
@@ -33,5 +35,16 @@ public class CarDetailsActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(mCar.getYear() + " " + mCar.getMake() + " " + mCar.getModel());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.bringToFront();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d("BACK", "BACK");
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

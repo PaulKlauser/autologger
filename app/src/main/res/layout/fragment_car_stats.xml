@@ -13,22 +13,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp">
-                <RelativeLayout
+                <ListView
+                    android:id="@+id/mileage_list"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:id="@+id/best_mileage_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="Best Mileage:"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="Past Mileage:"
-                        android:layout_below="@id/best_mileage_title"/>
-                </RelativeLayout>
+                    android:layout_height="match_parent"/>
+                <!--<RelativeLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent">-->
+                    <!--<TextView-->
+                        <!--android:id="@+id/best_mileage_title"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_margin="10dp"-->
+                        <!--android:text="Best Mileage:"/>-->
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_margin="10dp"-->
+                        <!--android:text="Past Mileage:"-->
+                        <!--android:layout_below="@id/best_mileage_title"/>-->
+                <!--</RelativeLayout>-->
 
             </android.support.v7.widget.CardView>
 

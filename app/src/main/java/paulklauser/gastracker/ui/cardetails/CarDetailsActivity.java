@@ -48,29 +48,19 @@ public class CarDetailsActivity extends BaseActivity implements LogMilesListener
             }
         });
 
-        getFragmentManager().beginTransaction().add(R.id.content_container, CarStatsFragment.newInstance()).commit();
+        getFragmentManager().beginTransaction().add(R.id.content_container, CarStatsFragment.newInstance(mCar)).commit();
     }
 
     private void showLogging() {
         hideFab(mLogMiles);
-        getFragmentManager().beginTransaction().replace(R.id.content_container, LogMilesFragment.newInstance()).commit();
+        getFragmentManager().beginTransaction().replace(R.id.content_container, LogMilesFragment.newInstance(mCar)).commit();
         mShowingStats = false;
     }
 
     private void showStats() {
         showFab(mLogMiles);
-        getFragmentManager().beginTransaction().replace(R.id.content_container, CarStatsFragment.newInstance()).commit();
+        getFragmentManager().beginTransaction().replace(R.id.content_container, CarStatsFragment.newInstance(mCar)).commit();
         mShowingStats = true;
-    }
-
-    private void swapFragments() {
-        if (mShowingStats) {
-            getFragmentManager().beginTransaction().replace(R.id.content_container, LogMilesFragment.newInstance()).commit();
-            mShowingStats = false;
-        } else {
-            getFragmentManager().beginTransaction().replace(R.id.content_container, CarStatsFragment.newInstance()).commit();
-            mShowingStats = true;
-        }
     }
 
     @Override
@@ -151,5 +141,6 @@ public class CarDetailsActivity extends BaseActivity implements LogMilesListener
     public void milesLoggingDone(int odometer, double gallons) {
         showFab(mLogMiles);
         showStats();
+
     }
 }

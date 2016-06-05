@@ -12,7 +12,11 @@ import android.widget.ListView;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
+import paulklauser.gastracker.MainApplication;
 import paulklauser.gastracker.R;
+import paulklauser.gastracker.dagger.DatabaseModule;
 import paulklauser.gastracker.database.Car;
 import paulklauser.gastracker.database.CarDataSource;
 import paulklauser.gastracker.ui.BaseActivity;
@@ -24,17 +28,21 @@ import paulklauser.gastracker.ui.cardetails.CarDetailsActivity;
  */
 public class CarListActivity extends BaseActivity implements CarListAdapter.CarListAdapterListener {
 
-    List<Car> mCars;
+    @Inject
+    CarDataSource mCarDataSource;
+
+    private List<Car> mCars;
     private static final String DBG_TAG = "CarListActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((MainApplication)getApplication()).getDatabaseComponent().inject(this);
         setContentView(R.layout.activity_car_list);
-        CarDataSource carDataSource = new CarDataSource(this);
-        carDataSource.open();
+        //CarDataSource carDataSource = new CarDataSource(this);
+        mCarDataSource.open();
         RecyclerView carList = (RecyclerView) findViewById(R.id.car_list);
-        mCars = carDataSource.getAllCars();
+        mCars = mCarDataSource.getAllCars();
         CarListAdapter adapter = new CarListAdapter(mCars, this);
         carList.setAdapter(adapter);
         carList.setLayoutManager(new LinearLayoutManager(this));

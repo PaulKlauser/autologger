@@ -9,6 +9,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import javax.inject.Inject;
+
+import paulklauser.gastracker.MainApplication;
 import paulklauser.gastracker.R;
 import paulklauser.gastracker.database.Car;
 import paulklauser.gastracker.database.CarDataSource;
@@ -19,19 +22,21 @@ public class AddCarActivity extends BaseActivity {
 
     private static final String DBG_TAG = "AddCarActivity";
 
+    @Inject
     CarDataSource mCarDataSource;
     Car mCurrentCar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((MainApplication)getApplication()).getDatabaseComponent().inject(this);
         setContentView(R.layout.activity_add_car);
         getFragmentManager()
             .beginTransaction()
             .add(R.id.add_car_frame, new EnterInfoFragment())
             .commit();
 
-        mCarDataSource = new CarDataSource(this);
+        //mCarDataSource = new CarDataSource(this);
         mCarDataSource.open();
     }
 

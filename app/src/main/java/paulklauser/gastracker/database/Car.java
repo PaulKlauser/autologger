@@ -10,6 +10,8 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import java.util.List;
+
 import paulklauser.gastracker.utils.BitMapUtils;
 
 /**
@@ -27,6 +29,7 @@ public class Car implements Parcelable {
     private int mMiles;
 //    private Bitmap mPicture;
     private String mPicturePath;
+    private List<MileageEntry> mMileageEntries;
 
     public Car() {
 
@@ -95,6 +98,14 @@ public class Car implements Parcelable {
         //mPicture = picture;
         Log.d(DBG_TAG, "Setting picture path to: " + path);
         mPicturePath = path;
+    }
+
+    public void setEntryList(List<MileageEntry> entries) {
+        mMileageEntries = entries;
+    }
+
+    public List<MileageEntry> getMileageEntries() {
+        return mMileageEntries;
     }
 
     @Override

@@ -32,7 +32,7 @@ public class LogMilesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_input_mileage, container, false);
-        mCar = savedInstanceState.getParcelable("car");
+        mCar = getArguments().getParcelable("car");
         Button done = (Button)rootView.findViewById(R.id.done);
         done.setOnClickListener(new View.OnClickListener() {
             @Override

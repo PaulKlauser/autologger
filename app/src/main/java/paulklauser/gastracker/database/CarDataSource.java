@@ -69,12 +69,13 @@ public class CarDataSource {
         return entries;
     }
 
-    public MileageEntry createMileageEntry(long date, int odometer, int miles, int gallons) {
+    public MileageEntry createMileageEntry(long date, int odometer, int miles, double gallons, long carId) {
         ContentValues values = new ContentValues();
         values.put(CarDatabaseHelper.COLUMN_DATE, date);
         values.put(CarDatabaseHelper.COLUMN_ODOMETER, odometer);
         values.put(CarDatabaseHelper.COLUMN_MILES, miles);
         values.put(CarDatabaseHelper.COLUMN_GALLONS, gallons);
+        values.put(CarDatabaseHelper.COLUMN_CAR_ID, carId);
         long insertId = mDatabase.insert(CarDatabaseHelper.TABLE_MILEAGE, null, values);
         Cursor cursor = mDatabase.query(CarDatabaseHelper.TABLE_MILEAGE, allMileageColumns, CarDatabaseHelper.COLUMN_ID +
         " = " + insertId, null, null, null, null);
@@ -166,7 +167,7 @@ public class CarDataSource {
         car.setYear(cursor.getString(4));
         car.setMiles(cursor.getInt(5));
         car.setPicturePath(cursor.getString(6));
-        car.setEntryList(getMileageEntries(car.getId()));
+        //car.setEntryList(getMileageEntries(car.getId()));
         return car;
     }
 

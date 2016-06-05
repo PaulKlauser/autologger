@@ -15,8 +15,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import javax.inject.Inject;
+
+import paulklauser.gastracker.MainApplication;
 import paulklauser.gastracker.R;
 import paulklauser.gastracker.database.Car;
+import paulklauser.gastracker.database.CarDataSource;
 import paulklauser.gastracker.ui.BaseActivity;
 
 /**
@@ -28,9 +32,13 @@ public class CarDetailsActivity extends BaseActivity implements LogMilesListener
     private FloatingActionButton mLogMiles;
     private boolean mShowingStats;
 
+    @Inject
+    CarDataSource mCarDataSource;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((MainApplication)getApplication()).getDatabaseComponent().inject(this);
         mShowingStats = true; //Need to take into account savedInstanceState stuff
         mCar = getIntent().getParcelableExtra("car");
         setContentView(R.layout.activity_car_details);
@@ -141,6 +149,6 @@ public class CarDetailsActivity extends BaseActivity implements LogMilesListener
     public void milesLoggingDone(int odometer, double gallons) {
         showFab(mLogMiles);
         showStats();
-
+        mCarDataSource.createMileageEntry(System.currentTimeMillis(), odometer, 0, gallons, mCar.getId());
     }
 }

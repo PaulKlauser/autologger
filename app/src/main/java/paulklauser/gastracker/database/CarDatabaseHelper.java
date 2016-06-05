@@ -34,11 +34,11 @@ public class CarDatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_CREATE_CARS = "create table " + TABLE_CARS + "(" +
             COLUMN_ID + " integer primary key autoincrement, " + COLUMN_NICK_NAME + " text, " + COLUMN_MAKE + " text not null, " +
             COLUMN_MODEL + " text not null, " + COLUMN_YEAR + " text not null, " + COLUMN_MILES + " integer, " +
-            COLUMN_PICTURE_PATH + " text);";
+            COLUMN_PICTURE_PATH + " text)";
 
     private static final String DATABASE_CREATE_MILEAGE = "create table " + TABLE_MILEAGE + "(" +
             COLUMN_ID + " integer primary key autoincrement, " + COLUMN_DATE + " integer, " + COLUMN_ODOMETER + " integer, " +
-            COLUMN_DIFFERENCE + " integer, " + COLUMN_GALLONS + " integer, " + COLUMN_CAR_ID + " integer);";
+            COLUMN_DIFFERENCE + " integer, " + COLUMN_GALLONS + " integer, " + COLUMN_CAR_ID + " integer)";
 
     public CarDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -46,7 +46,8 @@ public class CarDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(DATABASE_CREATE_CARS + DATABASE_CREATE_MILEAGE);
+        db.execSQL(DATABASE_CREATE_CARS);
+        db.execSQL(DATABASE_CREATE_MILEAGE);
     }
 
     @Override

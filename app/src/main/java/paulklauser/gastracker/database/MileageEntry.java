@@ -11,7 +11,7 @@ public class MileageEntry {
     private long mDateInMillis;
     private int mOdometer;
     private int mMiles;
-    private int mGallons;
+    private double mGallons;
 
     public MileageEntry() {
 
@@ -49,7 +49,7 @@ public class MileageEntry {
         mMiles = miles;
     }
 
-    public void setGallons(int gallons) {
+    public void setGallons(double gallons) {
         mGallons = gallons;
     }
 
@@ -59,5 +59,9 @@ public class MileageEntry {
 
     public void setId(long id) {
         mId = id;
+    }
+
+    public String toString() {
+        return getDate() + " " + mOdometer + " " + mGallons;
     }
 }

@@ -15,8 +15,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".ui.addcar.AddCarActivity"
-            android:label="@string/title_activity_add_car"
-            android:screenOrientation="portrait"/>
+            android:label="@string/title_activity_add_car"/>
         <activity
             android:name=".ui.carlist.CarListActivity">
             <intent-filter>

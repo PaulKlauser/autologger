@@ -1,6 +1,7 @@
 package paulklauser.gastracker.ui;
 
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -19,6 +20,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
         mSharedPreferences = getSharedPreferences("Base", 0);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     protected void setIsFirstLaunch(boolean isFirst) {

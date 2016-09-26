@@ -149,6 +149,8 @@ public class CarDetailsActivity extends BaseActivity implements LogMilesListener
     public void milesLoggingDone(int odometer, double gallons) {
         showFab(mLogMiles);
         showStats();
-        mCarDataSource.createMileageEntry(System.currentTimeMillis(), odometer, 0, gallons, mCar.getId());
+        mCarDataSource.createMileageEntry(System.currentTimeMillis(), odometer, odometer - mCar.getMiles(), gallons, mCar.getId());
+        mCar.setMiles(mCar.getMiles() + odometer);
+        mCarDataSource.updateCar(mCar);
     }
 }

@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import paulklauser.gastracker.R;
 import paulklauser.gastracker.database.Car;
@@ -16,7 +18,7 @@ import paulklauser.gastracker.database.Car;
  */
 public class LogMilesFragment extends Fragment {
 
-    private Car mCar;
+    private Car mCar; //Probs don't need this
 
     public static LogMilesFragment newInstance(Car car) {
 
@@ -34,10 +36,12 @@ public class LogMilesFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_input_mileage, container, false);
         mCar = getArguments().getParcelable("car");
         Button done = (Button)rootView.findViewById(R.id.done);
+        final EditText gallons = (EditText) rootView.findViewById(R.id.gallons);
+        final EditText odometer = (EditText) rootView.findViewById(R.id.odometer);
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((LogMilesListener)getActivity()).milesLoggingDone(0, 0);
+                ((LogMilesListener)getActivity()).milesLoggingDone(Integer.valueOf(gallons.getText().toString()), Double.valueOf(odometer.getText().toString()));
             }
         });
         

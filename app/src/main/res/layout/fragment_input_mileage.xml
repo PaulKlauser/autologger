@@ -14,6 +14,7 @@
         android:id="@+id/odometer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="number"
         android:hint="Odometer"/>
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
@@ -27,6 +28,7 @@
         android:id="@+id/gallons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
         android:hint="Gallons"/>
     </android.support.design.widget.TextInputLayout>
 

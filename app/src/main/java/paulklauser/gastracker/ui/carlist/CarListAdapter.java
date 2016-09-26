@@ -25,7 +25,7 @@ public class CarListAdapter extends RecyclerView.Adapter<CarListAdapter.ViewHold
 
     private static final String DBG_TAG = "CarListAdapter";
 
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener { //TODO:Needs to implement on click?
         public TextView make;
         public TextView model;
         public TextView year;
@@ -73,7 +73,7 @@ public class CarListAdapter extends RecyclerView.Adapter<CarListAdapter.ViewHold
         holder.make.setText(car.getMake());
         holder.model.setText(car.getModel());
         holder.year.setText(car.getYear());
-        holder.odometer.setText(String.valueOf(car.getMiles()));
+        holder.odometer.setText(String.valueOf(car.getMiles()) + " Miles");
         Bitmap bm = BitmapFactory.decodeFile(car.getPicturePath());
         holder.image.setImageBitmap(bm);
         holder.cardView.setOnClickListener(new View.OnClickListener() {

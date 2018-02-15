@@ -45,7 +45,7 @@ public class CarListAdapter extends RecyclerView.Adapter<CarListAdapter.ViewHold
 
         @Override
         public void onClick(View v) {
-
+            //TODO: PK 2/12/18 - Probably don't need this
         }
     }
 

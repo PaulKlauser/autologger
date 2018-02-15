@@ -57,7 +57,7 @@ public class CarDataSource {
         List<MileageEntry> entries = new ArrayList<>();
 
         Cursor cursor = mDatabase.query(CarDatabaseHelper.TABLE_MILEAGE, allMileageColumns, CarDatabaseHelper.COLUMN_CAR_ID
-         + " = " + carId, null, null, null, null);
+         + " = " + carId, null, null, null, CarDatabaseHelper.COLUMN_DATE + " DESC");
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {

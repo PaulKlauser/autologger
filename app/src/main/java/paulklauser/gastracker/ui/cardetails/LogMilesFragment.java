@@ -41,7 +41,7 @@ public class LogMilesFragment extends Fragment {
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((LogMilesListener)getActivity()).milesLoggingDone(Integer.valueOf(gallons.getText().toString()), Double.valueOf(odometer.getText().toString()));
+                ((LogMilesListener)getActivity()).milesLoggingDone(Integer.valueOf(odometer.getText().toString()), Double.valueOf(gallons.getText().toString()));
             }
         });
         

@@ -1,53 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="50dp">
+    android:layout_height="50dp"
+    android:gravity="center_vertical">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray"
-        android:layout_alignParentBottom="true"/>
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="@android:color/darker_gray"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"/>-->
     <TextView
         android:id="@+id/date"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
+        android:layout_marginStart="10dp"
         tools:text="8/26/2016"/>
     <TextView
         android:id="@+id/odometer"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/date"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
         tools:text="297,365 mi"/>
     <TextView
         android:id="@+id/trip_length"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/odometer"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="20dp"
+        android:layout_weight=".6"
         tools:text="254 mi"/>
     <TextView
         android:id="@+id/gallons"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/trip_length"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="15dp"
-        tools:text="12 gal"/>
+        android:layout_weight=".7"
+        tools:text="12.0 gal"/>
     <TextView
         android:id="@+id/mpg"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="10dp"
+        android:layout_weight=".9"
         tools:text="21.17 MPG"/>
 
-</android.support.percent.PercentRelativeLayout>
+</LinearLayout>

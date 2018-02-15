@@ -40,6 +40,7 @@ public class CarDetailsActivity extends BaseActivity implements LogMilesListener
         super.onCreate(savedInstanceState);
         ((MainApplication)getApplication()).getDatabaseComponent().inject(this);
         mShowingStats = true; //Need to take into account savedInstanceState stuff
+        //TODO PK: Need to get car from database so that we don't lose ish when the screen resets
         mCar = getIntent().getParcelableExtra("car");
         setContentView(R.layout.activity_car_details);
         ImageView carImage = (ImageView) findViewById(R.id.car_image);
@@ -150,7 +151,7 @@ public class CarDetailsActivity extends BaseActivity implements LogMilesListener
         showFab(mLogMiles);
         showStats();
         mCarDataSource.createMileageEntry(System.currentTimeMillis(), odometer, odometer - mCar.getMiles(), gallons, mCar.getId());
-        mCar.setMiles(mCar.getMiles() + odometer);
+        mCar.setMiles(odometer);
         mCarDataSource.updateCar(mCar);
     }
 }

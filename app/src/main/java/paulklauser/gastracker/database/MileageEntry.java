@@ -26,15 +26,19 @@ public class MileageEntry {
     }
 
     public String getOdometer() {
-        return String.valueOf(mOdometer);
+        return mOdometer + " mi";
     }
 
     public String getGallons() {
-        return String.valueOf(mGallons);
+        return mGallons + " gal";
     }
 
     public String getMileage() {
-        return String.valueOf(mMiles/mGallons);
+        return mMiles/mGallons + " MPG";
+    }
+
+    public String getTripLength() {
+        return String.valueOf(mMiles);
     }
 
     public void setDateInMillis(long dateInMillis) {
